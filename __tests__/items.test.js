@@ -4,7 +4,6 @@ const request = require('supertest');
 const app = require('../lib/app');
 const UserService = require('../lib/services/UserService');
 const Item = require('../lib/models/Item');
-const authenticate = require('../lib/middleware/authenticate');
 const mockUser = {
   firstName: 'Test',
   lastName: 'User',
@@ -18,7 +17,7 @@ const mockUser2 = {
   password: '123456',
 };
 
-const registerAndLogin = async, authenticate (userProps = {}) => {
+const registerAndLogin = async (userProps = {}) => {
   const password = userProps.password ?? mockUser.password;
 
   // Create an "agent" that gives us the ability
