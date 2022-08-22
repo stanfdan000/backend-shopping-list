@@ -42,7 +42,8 @@ describe('items', () => {
   });
   it('POST /api/v1/items creates a new shopping item with the current user', async () => {
     const [agent, user] = await registerAndLogin();
-    const newItem = { description: 'eggs', qty: 12 };
+    
+    const newItem = { description: 'eggs', qty: 12, user_id: user.id };
     const resp = await agent.post('/api/v1/items').send(newItem);
     // expect(resp.status).toEqual(200);
     expect(resp.body).toEqual({
